@@ -12,7 +12,7 @@ class RevisionTest < MiniTest::Test
   # this will run once before EACH test
   def setup()
     @friends = [
-      rachel: {
+      {
         name: "Rachel Greene",
         job: "Waitress",
         romantic_interests: ["Ross", "Bruce Willis"],
@@ -27,7 +27,7 @@ class RevisionTest < MiniTest::Test
           }
         ]
       },
-      ross: {
+      {
         name: "Ross Gellar",
         job: "Dinosaurs",
         romantic_interests: ["Rachel", "Emily"],
@@ -38,7 +38,7 @@ class RevisionTest < MiniTest::Test
           }
         ]
       },
-      monica: {
+      {
         name: "Monica Gellar",
         job: "Chef",
         romantic_interests: ["Jon Faverau",
@@ -60,8 +60,18 @@ class RevisionTest < MiniTest::Test
 
     def test_monica_is_friend()
       #act
-      expected + true
+      expected = true
       actual = is_friend?(@friends, "Monica Gellar")
+
+      # assert
+      assert_equal(expected, actual)
+
+    end
+
+    def test_Chandler_is_not_friend()
+      #act
+      expected = false
+      actual = is_friend?(@friends, "Chandler Bing")
 
       # assert
       assert_equal(expected, actual)
